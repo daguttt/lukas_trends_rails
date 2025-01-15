@@ -6,7 +6,7 @@ Discover the forecast of the top currencies and cryptos as well as their history
 
 ### 1. Environment variables
 
-Create a `.env` file and populate it based on the content of `.env.erb` template file.
+Create a `.env` file and populate it based on the content of [`.env.erb`](.env.erb) template file.
 Environment variables include:
 
   1. Database Credentials.
