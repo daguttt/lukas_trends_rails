@@ -1,0 +1,14 @@
+{
+  "[erb]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "manuelpuyol.erb-linter"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.defaultColorDecorators": "auto",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.wordSeparators": "`~@#$%^&*()-=+[{]}\\|;:'\",.<>/"
+  }
+}

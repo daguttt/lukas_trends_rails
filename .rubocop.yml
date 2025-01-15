@@ -1,5 +1,40 @@
 require:
   - rubocop-rails
+  - rubocop-erb
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  SuggestExtensions: false
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
 
 Rails:
   Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*.rb'
+    - 'lib/tasks/**/*.rake'
+    - 'spec/**/*_spec.rb'
+
+Metrics/MethodLength:
+  Max: 20
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'config/**/*.rb'
+    - 'db/migrate/*.rb'
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+  IndentationWidth: 2
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
