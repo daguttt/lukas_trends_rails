@@ -42,13 +42,13 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-end
 
+  gem "rubocop", require: false
+  # [https://github.com/rubocop/rubocop-rails?tab=readme-ov-file]
+  gem "rubocop-rails", require: false
+end
