@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_may :chats
+  has_many :chats, dependent: :destroy
 
   # TODO: Add validations
 end
