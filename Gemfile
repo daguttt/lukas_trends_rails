@@ -54,3 +54,5 @@ group :development do
   gem 'rubocop-erb', '~> 0.5.5'
   gem 'rubocop-rails', require: false
 end
+
+gem 'dotenv'
