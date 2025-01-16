@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_15_184729) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_15_185745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "question", limit: 255
+    t.text "reply"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_currencies_on_name", unique: true
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.date "date"
+    t.decimal "lukas_value", precision: 10, scale: 2
+    t.bigint "currency_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency_id"], name: "index_histories_on_currency_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "full_name", limit: 80
@@ -24,4 +49,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_15_184729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "chats", "users"
+  add_foreign_key "histories", "currencies"
 end
