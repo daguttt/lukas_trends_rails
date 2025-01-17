@@ -34,14 +34,51 @@ class Api::V1::DataController < ApplicationController
     )
 
     response = conn.get("/v1/ohlcv/BITSTAMP_SPOT_#{@currency}_USD/history?period_id=#{@period_aux}&time_start=#{@time_start}T00%3A00%3A00&time_end=#{@time_end}T23%3A59%3A59&limit=2000",{}, {'Content-Type' => 'application/json', 'X-CoinAPI-Key' => "#{ENV.fetch('COIN_API_KEY')}"})
-# => GET http://httpbingo.org/get?boom=zap
     puts "THIS IS THE RESPONSE"
     puts "/v1/ohlcv/BITSTAMP_SPOT_#{@currency}_USD/history?period_id=#{@period_aux}&time_start=#{@time_start}T00%3A00%3A00&time_end=#{@time_end}T23%3A59%3A59&limit=2000"
-    puts response.body
+    response.body
+
+    #Parse the JSON string
+    history = JSON.parse(response.body)
+
+    lukas = convert_lukas("day",@time_start,@time_end, history)
+    #puts lukas.class
 
 
-    render json: response.body
+    render json: lukas
 
   end
+
+  private
+
+  def convert_lukas(period_id,time_start,time_end, history_data)
+      #this function will convert to lukas value
+      #Remember that lukas means 1 dolar in values of colombian pesos
+
+      conn = Faraday.new(
+      url: "http://apilayer.net/api"
+    )
+
+    response = conn.get("/timeframe",{access_key: ENV.fetch('CURRENCY_LAYER_API_KEY'), start_date: time_start, end_date: time_end, currencies: "COP" }, {'Content-Type' => 'application/json'})
+
+    #Parse the JSON string
+    lukas_history = []
+    lukas = JSON.parse(response.body)
+    history_data.each do |data|
+      time = data["time_period_start"].split("T")
+      puts "day: #{time[0]} value #{data["price_close"]}"
+      cop_day = lukas["quotes"][time[0]]["USDCOP"]
+      #organize for history
+      lukas_history << {time[0] => data["price_close"]*cop_day}
+    end
+
+    puts lukas["quotes"]
+
+    lukas_history
+
+
+  end
+
+
 
 end
