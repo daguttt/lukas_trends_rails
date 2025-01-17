@@ -1,3 +1,6 @@
+require 'date'
+#to calculate with data of date
+
 class Api::V1::DataController < ApplicationController
   def history
     #this api retrieve the value of a currency in 5 years, you choose the period of time day, week, month, year
@@ -55,7 +58,32 @@ class Api::V1::DataController < ApplicationController
       #this function will convert to lukas value
       #Remember that lukas means 1 dolar in values of colombian pesos
 
-      conn = Faraday.new(
+      #Calculate time between days cause currencylayerAPI can work with maximum one year not like coinAPI that can get 5 years or more
+      # Strings in "YYYY-MM-DD" format
+      date1_str = time_start
+      date2_str = time_end
+
+      # Parse strings into Date objects
+      date1 = Date.parse(date1_str)
+      date2 = Date.parse(date2_str)
+
+      # Calculate the difference in days
+      difference_in_days = (date2 - date1).to_i
+
+      if difference_in_days <= 365
+          puts " 1 años"
+      else
+          #this function works even with leap year i test with https://onlinealarmkur.com/date/es/
+          years = (difference_in_days/365.0).to_i
+          days = difference_in_days % 365
+          puts "hay tantos #{years} años y tantos #{days} días"
+      end
+
+      puts "Los días entre las dos fechas SONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn......"
+      puts difference_in_days
+
+
+    conn = Faraday.new(
       url: "http://apilayer.net/api"
     )
 
