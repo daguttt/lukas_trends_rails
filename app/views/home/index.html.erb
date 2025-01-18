@@ -1,0 +1,32 @@
+<div class="container">
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Stay ahead of the curve, predict the future of currency.</h1>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Chart Section -->
+    <div class="chart">
+      <div class="chart-placeholder">
+        Chart will be rendered here
+      </div>
+    </div>
+
+    <!-- Search and Info Section -->
+    <div class="search-section">
+      <%= form_with url: "#", method: :get, local: true do %>
+        <label for="currency-input">What currency would you like to forecast?</label>
+        <%= text_field_tag :currency, nil, placeholder: "Search...", class: "currency-input" %>
+        <%= submit_tag "Search", class: "search-button" %>
+      <% end %>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque quam vel...</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 LukasTrend. All rights reserved.
+  </footer>
+</div>
+
