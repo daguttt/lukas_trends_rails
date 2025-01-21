@@ -20,15 +20,11 @@ class Api::V1::DataController < ApplicationController
     @time_end = params[:time_end].nil? ? "2024-12-31" : params[:time_end]
     
     #organize the period of time
-    case @period_id
-    when "day"
-      @period_aux = "1DAY"
-    when "week"
-      @period_aux = "7DAY"
-    when "month"
-       @period_aux = "1MTH"
-    when "year"
-       @period_aux = "1YRS"
+    @period_aux = case @period_id
+      when "day" then "1DAY"
+      when "week" then "7DAY"
+      when "month" then "1MTH"
+      when "year" then "1YRS"
     end
 
     #puts response.body
