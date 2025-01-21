@@ -6,6 +6,13 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
 ARG RUBY_VERSION=3.2.2
+# Add default environment variables
+ARG POSTGRES_USER=$POSTGRES_USER
+ARG POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+ARG POSTGRES_DB=$POSTGRES_DB
+ARG DATABASE_PORT=$DATABASE_PORT
+ARG DATABASE_HOST=$DATABASE_HOST
+
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
@@ -43,7 +50,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN ./bin/rails assets:precompile
 
 
 

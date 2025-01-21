@@ -62,4 +62,5 @@ group :test do
   gem 'rspec-rails'
 end
 
-gem 'dotenv'
+gem 'dotenv', groups: [:development, :test]
+
