@@ -21,6 +21,8 @@ default: &default
   username: <%= ENV.fetch("DATABASE_USERNAME") %>
   password: <%= ENV.fetch("DATABASE_PASSWORD") %>
   port: <%= ENV.fetch("DATABASE_PORT") %>
+  host: <%= ENV["DATABASE_HOST"] %>
+
 
 development:
   <<: *default

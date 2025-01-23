@@ -63,3 +63,6 @@ group :test do
 end
 
 gem 'dotenv'
+
+# Gem to save and bring images from the web
+gem 'cloudinary'
