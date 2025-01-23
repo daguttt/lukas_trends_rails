@@ -63,3 +63,6 @@ group :test do
 end
 
 gem 'dotenv'
+
+#gem for cron jobs
+gem 'whenever', :require => false

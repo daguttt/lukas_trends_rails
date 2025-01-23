@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     puts 'SE ENVIA CORREO'
     UserMailer.welcome_email.deliver_now
   end
+
+  def imprimir
+    puts "hola"
+  end
 end
