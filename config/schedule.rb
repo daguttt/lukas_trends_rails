@@ -19,13 +19,12 @@
 
 # Learn more: http://github.com/javan/whenever
 #
-#this line is very important cause if it is not present you will get
-#bundle exec error 
-env :PATH, ENV['PATH']
+# this line is very important cause if it is not present you will get
+# bundle exec error
+env :PATH, ENV.fetch('PATH', nil)
 
 set :output, "log/cron_output.log"
 
 every 1.minutes do
-  rake "apple"
-  runner "ApplicationController.new.imprimir"
+  rake "histories:currency_date"
 end
