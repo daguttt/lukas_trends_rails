@@ -49,13 +49,10 @@ body {
 }
 
 .chart-placeholder {
-  background: #dfe7ff;
-  border: 1px dashed #0066ff;
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #0066ff;
 }
 
 .search-section {
