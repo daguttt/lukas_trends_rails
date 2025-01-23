@@ -17,7 +17,6 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
-
   </head>
 
   <body>
@@ -31,7 +30,7 @@
       <!-- Links Section -->
       <div class="flex space-x-4">
         <!-- Log in Button -->
-        <%= link_to root_path, class: "flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg shadow-sm hover:bg-gray-100 transition" do %>
+        <%= link_to root_path, class: "flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg shadow-sm hover:bg-gray-100 transition text-xs" do %>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9.75A3.75 3.75 0 1112 6a3.75 3.75 0 013.75 3.75zM6.75 22.5a6 6 0 0112 0" />
           </svg>
@@ -39,12 +38,12 @@
         <% end %>
 
         <!-- Sign up Button -->
-        <%= link_to root_path, 
-class: 'px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition' do %>
+        <%= link_to root_path, class: 'flex items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition text-xs' do %>
           Sign up
         <% end %>
       </div>
     </nav>
     <main class="container mx-auto mt-28 px-5 flex"><%= yield %></main>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/dist/echarts.min.js"></script>
 </html>

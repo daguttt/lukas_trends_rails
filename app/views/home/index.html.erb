@@ -5,34 +5,38 @@
   </header>
 
   <!-- Main Content -->
-  <div class="main">
+  <div class="main-home">
     <!-- Chart Section -->
     <div class="chart">
       <div class="chart-placeholder">
-        Chart will be rendered here
       </div>
     </div>
 
     <!-- Search and Info Section -->
-<div class="search-section">
-  <%= form_with method: :post, class: "relative w-full" do %>
-    <%= text_field_tag :currency, nil,
-        placeholder: "What currency would you like to forecast?",
-        class: "w-full border rounded-lg p-3 pr-20" %>
- <%= button_tag type: "submit",
-    class: "absolute inset-y-0 right-0 flex items-center justify-center bg-black text-white p-2 rounded-r-lg" do %>
-  <%= image_tag "search(1).png", class: "h-5 w-5" %>
-<% end %>
-  <% end %>
-<div class="p-4 bg-gray-50 rounded-lg shadow-md border border-gray-300 max-w-xl mx-auto">
-  <p class="text-gray-700 leading-relaxed">
-    <%= @respuesta_generada || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque quam vel urna efficitur, vel volutpat ante sollicitudin. Integer vitae metus mollis, malesuada nulla et, maximus odio. Cras tempus ex ac erat fermentum, nec tempus lorem posuere. Donec convallis, arcu vitae tristique iaculis, turpis magna auctor leo, et volutpat erat lectus eget lorem.
-" %>
-  </p>
-</div>
+    <div class="search-section">
+      <video class="cursor-pointer" style="width: 80px; height: auto;" onclick="this.play(); this.muted = false; this.controls = false;">
+        <source src="animated-logo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-</div>
+
+      <%= form_with method: :post, class: "relative w-full" do %>
+        <%= text_field_tag :currency, nil,
+            placeholder: "What currency would you like to forecast?",
+            class: "w-full border rounded-lg p-3 pr-20" %>
+        <%= button_tag type: "submit", class: "absolute inset-y-0 right-0 flex items-center justify-center bg-black text-white p-2 rounded-r-lg" do %>
+          <%= image_tag "search.png", class: "h-5 w-5" %>
+        <% end %>
+      <% end %>
+      <div class="p-4 bg-gray-50 rounded-lg shadow-md border border-gray-300 max-w-xl mx-auto">
+        <p class="text-gray-700 leading-relaxed">
+          <%= @respuesta_generada || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque quam vel urna efficitur, vel volutpat ante sollicitudin. Integer vitae metus mollis, malesuada nulla et, maximus odio. Cras tempus ex ac erat fermentum, nec tempus lorem posuere. Donec convallis, arcu vitae tristique iaculis, turpis magna auctor leo, et volutpat erat lectus eget lorem." %>
+        </p>
+      </div>
+    </div>
 <!-- Footer -->
 <footer class="footer">
   © 2025 LukasTrend. All rights reserved.
 </footer>
+
+
