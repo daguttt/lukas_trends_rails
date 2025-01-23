@@ -63,3 +63,4 @@ currencies.each do |currency|
 end
 
 puts "Seeding completed! Added #{Currency.count} currencies "
+
