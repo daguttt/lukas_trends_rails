@@ -54,6 +54,6 @@ class Api::V1::DataController < ApplicationController
     end
 
     # Retornar los registros encontrados como JSON
-    @result
+    puts @result
   end
 end
