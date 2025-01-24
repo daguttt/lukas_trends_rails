@@ -25,7 +25,7 @@
             placeholder: "What currency would you like to forecast?",
             class: "w-full border rounded-lg p-3 pr-20" %>
         <%= button_tag type: 'submit', 
-class: 'absolute inset-y-0 right-0 flex items-center justify-center bg-black text-white p-2 rounded-r-lg' do %>
+    class: 'absolute inset-y-0 right-0 flex items-center justify-center bg-black text-white p-2 rounded-r-lg' do %>
           <%= image_tag 'search.png', class: 'h-5 w-5' %>
         <% end %>
       <% end %>
@@ -35,7 +35,29 @@ class: 'absolute inset-y-0 right-0 flex items-center justify-center bg-black tex
         </p>
       </div>
     </div>
+  </div>
 
+<!-- Sidebar -->
+<div class="sidebar">
+  <!-- Close Button -->
+  <button class="toggle-sidebar close-button" onclick="toggleSidebar()">✖</button>
+  <div class="sidebar-content">
+    <h3 class="sidebar-title">Menu</h3>
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Open Button (SVG outside sidebar) -->
+<button class="toggle-sidebar open-button" onclick="toggleSidebar()">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9963 0.0795918C12.8938 0.0790836 13.7855 0.179912 14.655 0.37831C13.7918 1.46688 13.2763 2.84364 13.2763 4.34081C13.2763 7.86585 16.1339 10.7235 19.6589 10.7235C21.157 10.7235 22.5346 10.2073 23.6236 9.34308L23.6294 9.3682C24.0254 11.1179 24.0214 12.9345 23.6177 14.6825C23.214 16.4305 22.421 18.0648 21.2978 19.4636C20.1746 20.8625 18.75 21.9896 17.1304 22.7614C15.5109 23.533 13.738 23.9292 11.9441 23.9203C10.2454 23.9119 8.56921 23.5405 7.02752 22.8324L1.08584 23.9067C0.782269 23.9616 0.472614 23.8491 0.275039 23.6122C0.0774625 23.3753 0.0224476 23.0504 0.130986 22.7617L1.83538 18.2271C0.789069 16.5191 0.18869 14.5728 0.093136 12.5673C-0.00948614 10.4135 0.474009 8.27224 1.49212 6.3715C2.51024 4.47077 4.02485 2.88178 5.87463 1.77379C7.72433 0.665826 9.84017 0.0803119 11.9963 0.0795918ZM23.9141 4.34081C23.9141 6.69084 22.009 8.59591 19.6589 8.59591C17.309 8.59591 15.4039 6.69084 15.4039 4.34081C15.4039 1.99078 17.309 0.0857111 19.6589 0.0857111C22.009 0.0857111 23.9141 1.99078 23.9141 4.34081Z" fill="#2563EB"/>
+  </svg>
+</button>
 
 <!-- Footer -->
 <footer class="footer">
@@ -220,4 +242,25 @@ class: 'absolute inset-y-0 right-0 flex items-center justify-center bg-black tex
     };
     myChart.setOption(option);
   });
+
+  // Sidebar toggle functionality
+  function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const openButton = document.querySelector('.open-button');
+  const closeButton = document.querySelector('.close-button');
+
+  // Check if the sidebar is open
+  const isOpen = sidebar.classList.contains('open');
+
+  if (isOpen) {
+    // Hide the sidebar
+    sidebar.classList.remove('open');
+    openButton.classList.remove('hidden');
+  } else {
+    // Show the sidebar
+    sidebar.classList.add('open');
+    openButton.classList.add('hidden');
+  }
+}
+
 </script>

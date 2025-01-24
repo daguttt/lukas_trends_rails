@@ -95,3 +95,93 @@ body {
   bottom: 0px;
   background-color: blue;
 }
+
+/* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -200px; /* Start completely hidden */
+  width: 200px;
+  height: 100%;
+  background-color: #0066ff;
+  color: white;
+  overflow: hidden;
+  transition: right 0.3s ease; /* Smoothly hide/show */
+}
+
+/* Sidebar fully visible when open */
+.sidebar.open {
+  right: 0; /* Fully visible */
+}
+
+/* Sidebar content */
+.sidebar .sidebar-content {
+  padding: 20px;
+}
+
+/* Sidebar title */
+.sidebar h3.sidebar-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Close Button inside the sidebar */
+.sidebar .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #0052cc;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .close-button:hover {
+  background-color: #003d99;
+}
+
+/* Open Button outside the sidebar (SVG icon) */
+.open-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Hide the open button when the sidebar is open */
+.open-button.hidden {
+  display: none;
+}
+
