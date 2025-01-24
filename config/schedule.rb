@@ -25,6 +25,6 @@ env :PATH, ENV.fetch('PATH', nil)
 
 set :output, "log/cron_output.log"
 
-every 1.minutes do
+every 1.day, :at => '06:00 am' do
   rake "histories:currency_date"
 end

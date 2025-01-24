@@ -6,9 +6,8 @@ namespace :histories do
     )
 
     # Currency
-    currencies = %w[USD EUR BTC ETH LTC]
-    # tiempo=Time.new();
-    # puts tiempo.strftime('%Y-%m-%d')
+    currencies = %w[USD EUR BTC ETH]
+    
     money = []
     currencies.each do |currency|
       response = conn.get("/v1/exchangerate/#{currency}/COP", {},
@@ -19,14 +18,20 @@ namespace :histories do
 
       date = lukas['time'].split('T')
       puts "day: #{date[0]}"
-      puts 'THIS IS THE RESPONSE'
 
       price = (lukas['rate'] / 1000.0).round(2) # get 3 decimal
       currency_model = Currency.find_by(symbol: currency)
-      puts
       History.create!(currency_id: currency_model.id, date: date[0], lukas_value: price)
 
+      money << {currency_model.description => price}
     end
 
+    users = User.all
+
+    users.each do |user|
+      UserMailer.welcome_email(user, money).deliver_now
+    end
+    puts "Esto es Users #{User.all.inspect}"
+    
   end
 end
