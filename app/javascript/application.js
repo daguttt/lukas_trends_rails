@@ -1,7 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails";
 import "controllers";
-console.log("Hermosis");
 document.addEventListener("DOMContentLoaded", function () {
   const chartContainer = document.getElementById("echart-container");
   if (!chartContainer) {
