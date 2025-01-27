@@ -66,3 +66,6 @@ gem 'dotenv'
 
 #HTTP Client library
 gem 'faraday'
+
+#gem for cron jobs
+gem 'whenever', :require => false
