@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'data/history', to: 'data#history'
+      get 'data/history2', to: 'data#history2'
     end
   end
 

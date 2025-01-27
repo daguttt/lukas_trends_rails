@@ -59,7 +59,7 @@
     var myChart = echarts.init(chartDom);
 
     async function fetchHistoricalData(currency, startDate, endDate, periodId) {
-      const apiUrl = `/api/v1/data/history?currency=${currency}&period_id=${periodId}&time_start=${startDate}&time_end=${endDate}`;
+      const apiUrl = `http://127.0.0.1:3000/api/v1/data/history2?currency=${currency}&period_id=${periodId}&time_start=${startDate}&time_end=${endDate}`;
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -70,9 +70,9 @@
       }
     }
 
-    const startDate = "2024-01-24";
+    const startDate = "2020-01-24";
     const endDate = "2025-01-24";
-    const periodId = "month";
+    const periodId = "year";
 
     const { dates, values: USD } = await fetchHistoricalData('COP', startDate, endDate, periodId);
     const { dates: d1, values: EUR } = await fetchHistoricalData('EUR', startDate, endDate, periodId);
