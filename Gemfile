@@ -71,3 +71,6 @@ group :test do
 end
 
 gem 'dotenv'
+
+#HTTP Client library
+gem 'faraday'

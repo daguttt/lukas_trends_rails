@@ -384,6 +384,7 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   faker
+  faraday
   importmap-rails
   jbuilder
   omniauth
