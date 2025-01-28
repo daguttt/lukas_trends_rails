@@ -1,3 +1,11 @@
+<% if notice.present? %>
+  <div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500"><%= notice %></div>
+<% end %>
+
+<% if alert.present? %>
+  <div class="mt-2 bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500"><%= alert %></div>
+<% end %>
+
 <table class="min-w-full divide-y divide-gray-200">
   <thead class="bg-gray-50">
     <tr>
@@ -13,7 +21,16 @@
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.full_name %></td>
         <td class="px-6 py-4"><%= user.email %></td>
-        <td class="px-6 py-4"><%= user.subscription_type %></td>
+        <td class="px-6 py-4">
+          <%= form_with(url: admin_change_user_subscription_type_path, class:"flex gap-4", method: :put) do |form| %>
+            <input type="hidden" name="user_id" value="<%= user.id %>">
+            <div>
+              <%= form.label :subscription_type, class: "sr-only" %>
+              <%= form.select :subscription_type, options_for_select(User::SUBSCRIPTION_TYPES, User::SUBSCRIPTION_TYPES[user.subscription_type.to_sym]), {}, {class: ' bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition'} %>
+            </div>
+            <%= form.submit 'Guardar', class: 'bg-blue-500 text-white font-medium px-4 py-2 rounded-md shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

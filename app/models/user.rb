@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  SUBSCRIPTION_TYPES = { FREE: 0, PREMIUM: 1 }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,7 +10,7 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
 
   enum :role, { USER: 0, ADMIN: 1 }
-  enum :subscription_type, { FREE: 0, PREMIUM: 1 }
+  enum :subscription_type, SUBSCRIPTION_TYPES
 
   before_create :set_default_role_and_subscription, if: :new_record?
 

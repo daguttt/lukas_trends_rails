@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :users, only: [:index]
+    get 'users' => 'users#index'
+    put 'users' => 'users#change_user_subscription_type', as: :change_user_subscription_type
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
