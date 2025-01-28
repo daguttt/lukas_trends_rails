@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_20_232855) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_27_235439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,8 +42,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_20_232855) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "subscription_type"
-    t.integer "role"
+    t.integer "subscription_type", default: 0
+    t.integer "role", default: 0
     t.json "preferences"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

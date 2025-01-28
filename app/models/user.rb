@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -8,6 +7,11 @@ class User < ApplicationRecord
 
   has_many :chats, dependent: :destroy
 
+  enum :role, { USER: 0, ADMIN: 1 }
+  enum :subscription_type, { FREE: 0, PREMIUM: 1 }
+
+  before_create :set_default_role_and_subscription, if: :new_record?
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -16,11 +20,11 @@ class User < ApplicationRecord
       user.avatar_url = auth.info.image
     end
   end
-end
-=======
-class User < ApplicationRecord
-  has_many :chats, dependent: :destroy
 
-  # TODO: Add validations
+  private
+
+  def set_default_role_and_subscription
+    self.role ||= :USER
+    self.subscription_type ||= :FREE
+  end
 end
->>>>>>> develop
