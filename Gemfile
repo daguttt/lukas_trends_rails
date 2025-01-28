@@ -69,3 +69,6 @@ gem 'faraday'
 
 #gem for cron jobs
 gem 'whenever', :require => false
+
+#Nokogori scraping
+gem 'nokogiri'
