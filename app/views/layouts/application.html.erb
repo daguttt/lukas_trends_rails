@@ -34,10 +34,13 @@
       <div class="flex space-x-4">
         <!-- Sign out Button -->
         <% if user_signed_in? %>
-          <%= button_to destroy_user_session_path, method: :delete do %>
-            <span class="sr-only">Sign out</span>
-            <%= image_tag('log-out-icon.svg') %>
-          <% end %>
+          <div class="flex gap-4 items-center">
+            <%= image_tag current_user.avatar_url, class: "size-10 rounded-full" %>
+            <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center" do %>
+              <span class="sr-only">Sign out</span>
+              <%= image_tag('log-out-icon.svg') %>
+            <% end %>
+          </div>
         <% else %>
         <!-- Log in Button -->
           <%= link_to new_user_session_path, class: 'flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg shadow-sm hover:bg-gray-100 transition text-xs' do %>
