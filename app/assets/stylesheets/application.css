@@ -87,15 +87,6 @@ body {
   background-color: #0052cc;
 }
 
-.footer {
-  position: absolute;
-  text-align: center;
-  margin-top: 30px;
-  color: #777;
-  bottom: 0px;
-  background-color: blue;
-}
-
 .google-btn {
   display: inline-flex;
   align-items: center;
