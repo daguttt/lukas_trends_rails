@@ -40,5 +40,5 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-/config/master.key
+#quitar las credentials
 /config/credentials.yml.enc
