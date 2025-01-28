@@ -10,6 +10,28 @@
     <div class="chart">
       <div class="chart-placeholder">
       </div>
+      <!-- Select Inputs Below Chart -->
+      <div class="chart-controls mt-4 p-4 bg-white rounded-lg shadow-md border border-gray-300 flex gap-4">
+        <div>
+          <label for="periodId" class="block text-sm font-medium text-gray-700">Select Period</label>
+          <select id="periodId" class="mt-1 block w-full px-4 py-2 bg-gray-50 border rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="day">Day</option>
+            <option value="month">Month</option>
+            <option value="year">Year</option>
+            <option value="week">Week</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+          <input id="startDate" type="date" class="mt-1 block w-full px-4 py-2 bg-gray-50 border rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+          <input id="endDate" type="date" class="mt-1 block w-full px-4 py-2 bg-gray-50 border rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+      </div>
     </div>
 
     <!-- Search and Info Section -->
@@ -34,8 +56,7 @@
         </p>
       </div>
     </div>
-
-
+</div>
 <!-- Footer -->
 <footer class="footer">
   © 2025 LukasTrend. All rights reserved.
@@ -222,5 +243,38 @@
 
 
     myChart.setOption(option);
+
+     // Attach event listeners for the new inputs
+        document.querySelector("#periodId").addEventListener("change", handleUpdate);
+        document.querySelector("#startDate").addEventListener("change", handleUpdate);
+        document.querySelector("#endDate").addEventListener("change", handleUpdate);
+
+        async function handleUpdate() {
+          const periodId = document.querySelector("#periodId").value;
+          const startDate = document.querySelector("#startDate").value || "2024-01-24";
+          const endDate = document.querySelector("#endDate").value || "2025-01-24";
+
+          // Show loader before fetching
+          const loader = document.createElement("div");
+          loader.className = "loader absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50";
+          chartDom.appendChild(loader);
+
+          const { dates, values: USD } = await fetchHistoricalData('COP', startDate, endDate, periodId);
+          const { dates: d1, values: EUR } = await fetchHistoricalData('EUR', startDate, endDate, periodId);
+          const { dates: d2, values: BTC } = await fetchHistoricalData('BTC', startDate, endDate, periodId);
+          const { dates: d3, values: ETH } = await fetchHistoricalData('ETH', startDate, endDate, periodId);
+
+          if (loader.parentElement) loader.remove();
+
+          myChart.setOption({
+            xAxis: [{ data: dates }],
+            series: [
+              { data: EUR },
+              { data: USD },
+              { data: BTC },
+              { data: ETH }
+            ]
+          });
+        }
   });
 </script>
