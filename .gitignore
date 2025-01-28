@@ -36,3 +36,9 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+#quitar las credentials
+/config/credentials.yml.enc
