@@ -41,3 +41,4 @@
 !/app/assets/builds/.keep
 
 /config/master.key
+/config/credentials.yml.enc
